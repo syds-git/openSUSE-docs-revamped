@@ -1,0 +1,92 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+body > div.container {
+  flex: 1 1 auto;
+}
+
+body > div.container > .row {
+  margin: 0;
+}
+
+.navbar .container, body > div.container {
+  max-width: 100%;
+  padding: 0;
+}
+
+footer.col-md-12 {
+  padding: 0;
+}
+
+.sidebar {
+  position: -webkit-sticky!important;
+  position: sticky!important;
+  top: 4.625rem;
+  z-index: 990;
+  height: calc(100vh - 9.875rem);
+  overflow-y: auto;
+}
+
+.sidebar a {
+  opacity: 75%;
+}
+
+.sidebar .current > a {
+  font-weight: bold;
+  opacity: 100%
+}
+
+.hljs, .hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+ color:inherit!important;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-meta {
+ color:var(--gray)!important
+}
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+ color:var(--turquoise)!important
+}
+.hljs-string,
+.hljs-doctag,
+.hljs-symbol,
+.hljs-bullet {
+ color:var(--pink)!important
+}
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+ color:var(--red)!important;
+}
+.hljs-type,
+.hljs-class .hljs-title {
+ color:var(--purple)!important
+}
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+ color:var(--cyan)!important
+}
+.hljs-regexp,
+.hljs-link {
+ color:var(--green)!important
+}
+.hljs-built_in,
+.hljs-builtin-name {
+ color:var(--info)!important
+}
+.hljs-deletion {
+ background:var(--red)!important
+}
+.hljs-addition {
+ background:var(--green)!important
+}
+

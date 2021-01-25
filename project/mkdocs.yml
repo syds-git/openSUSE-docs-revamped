@@ -15,32 +15,28 @@ plugins:
         #comment out the next two options to make every page have its own PDF
         combined: true
         combined_output_path: docs.pdf
-        
-theme:
-    name: material
-    font: false
-    custom_dir: overrides
-    palette:
-        scheme: preference
-        primary: green
-        accent: red
-    logo: image/Button-filled-colour.png
-    favicon: image/geeko-color.png
-    features:
-        - navigation.instant
-    icon:
-        repo: fontawesome/brands/github
 
-extra:
-    logo: image/geeko-color.png
-    social:
-    - icon: button-filled-monochrome
-      link: https://www.opensuse.org
-      name: openSUSE Main Website
-    - icon: fontawesome/brands/github
-      link: https://github.com/openSUSE
-      name: openSUSE GitHub
-      
+site_favicon: https://static.opensuse.org/favicon.svg
+
+theme:
+    name: mkdocs
+    custom_dir: 'theme/'
+    nav_style: custom sticky-top mb-3
+
+extra_javascript:
+- js/extra.js
+- https://static.opensuse.org/chameleon-3.0/dist/js/chameleon.js
+
+copyright: © 2020–2021 openSUSE contributors
+
+
+footer_links:
+  - text: Source Code
+    link: https://github.com/openSUSE/openSUSE-docs-revamped
+# Remove that comment when the license is there ;)
+#  - text: License
+#    link: https://github.com/openSUSE/openSUSE-docs-revamped/blob/master/LICENSE
+
 markdown_extensions:
     - admonition
     - def_list
@@ -58,7 +54,9 @@ nav:
         - Installation setups: ""
         - Preparing the installation media: media_choice.md
     - Installing:
-        - Step by step guide: yast_installer.md
+        - Step by step guide: 
+            - openSUSE Leap: leap_installer.md
+            - openSUSE Tumbleweed: tw_installer.md
         - Quick install for experienced users:
             - microOS specials: microos_getting_started.md
     - Distro basics:
