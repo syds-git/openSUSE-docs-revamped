@@ -54,7 +54,9 @@ nav:
         - Installation setups: ""
         - Preparing the installation media: media_choice.md
     - Installing:
-        - Step by step guide: yast_installer.md
+        - Step by step guide: 
+            - openSUSE Leap: leap_installer.md
+            - openSUSE Tumbleweed: tw_installer.md
         - Quick install for experienced users:
             - microOS specials: microos_getting_started.md
     - Distro basics:

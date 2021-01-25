@@ -1,7 +1,7 @@
-# Step by step guide
+# Step by step guide for openSUSE Leap
 ## Before you continue
 
-This guide is based on openSUSE Leap and assumes that you will have no other Linux, Windows or MacOS operating systems installed along openSUSE. However, the differences between the installers for the openSUSE variants - like Tumbleweed, MicroOS and Kubic - are miniscual and most parts of the installer will be identical. Expect slight differences in *System Role* and *Installation Settings*.
+This guide is based on **openSUSE Leap** and assumes that you will have no other Linux, Windows or MacOS operating systems installed along openSUSE. However, the differences between the installers for the openSUSE variants - like Tumbleweed, MicroOS and Kubic - are miniscule and most parts of the installer will be identical. Expect slight differences in *System Role* and *Installation Settings*.
 
 ### Minimum System Requirements
 
@@ -20,8 +20,8 @@ This guide is based on openSUSE Leap and assumes that you will have no other Lin
 If you read the above listed safety measures and hopefully followed them, you're ready to boot your erlier prepared USB drive and turn on your computer. Boot from the USB drive and select installation from the boot menu.
 
 If you want to see details while the installer is booting you can press `ESC` on the keyboard.
-
-## Language, Keyboard and License Agreement
+## Welcome
+### Language, Keyboard and License Agreement
 
 *Welcome to the YaST installer!*
 
@@ -31,11 +31,14 @@ If you done all the basic configurations do read through the `License Agreement`
 ??? info   
     On the left you will see a list of items where you can follow the steps you will take next or took already. You can always press `Back` in case you want to change something you configured earlier.
 
-Clicking `Next` will take you to the next step.
+!!! note "Online repositories"
+    If you have an active internet conenction over an ethernet cable connected to your computer, right after you pass the *"Language, Keyboard and License Agreement"* section you will be prompted with a question if you want to *"Activate online repositories now?"*.It is recommended to select *Yes* which will provide with a list repositories, pre-selecting the main ones in advance. 
 
-## Network Settings
+## Network Activation
+### Network Settings
 
-If you have an active wired internet connection which can automatically configure by the system you can skip this part. However, if you're not planning to use online repositories during the installation process and rely on the packages provided by the DVD installer you can skip this part.
+If you have an active wired internet connection which can be automatically configured by the system or if you're not planning to use online repositories during the installation process and rely on the packages provided by the DVD installer you can skip this part.   
+
 When you don't have a network connection - because you have don't have an ethernet port on your machine or you're using wireless connections only - you will be prompted to configure your network settings. By default the YaST system installer is using a network controller software called Wicked. Keep in mind that if you will choose to use Network Manager (NM) instead of Wicked, your network configuration will not be transferred from Wicked to Network Manager.
 
 You will see a list of available network adapters in a list from which you can select the one that you wish to configure and press `Edit`. In case of configuring a wireless adapter you will see the `Wireless Specific` tab open. Here you can `Scan Network`, select the name of you wireless network (SSID), select the authentication mode - which is in most cases will be WPA-PSK "home" - and input your password. 
@@ -45,10 +48,10 @@ On the `Addresses` tab you will be able to configure the ip address of your adap
 **If** you configured a statically assigned ip address switch to the `Routing` tab, press `Add` and add your default gateway address and select the network adapter to which you want this route to be assigned to.    
 Press `OK` then `Next` to apply your changes and continue the installer.
 
+## Online Repositories 
+### List of Online Repositories
 
-## List of Online Repositories
-
-If you have an active Internet conenction over an ethernet cable connected to your computer, right after you pass the *"Language, Keyboard and License Agreement"* section you will be prompted with a question if you want to *"activate online repositories now?"*.It is recommended to select *Yes* which will provide with a list repositories, pre-selecting the main ones in advance. These repositories are the following:
+These repositories are the following:
 
 * Update Repository (Non-Oss): Non-free - as in Free Open-Source Software (FOSS) - update repository. Provides security and maintenance updates for the distribution. Selected.
 * Non-OSS Repository: Non-free repository. Provides packages like Steam. Selected.
@@ -61,9 +64,7 @@ If you have an active Internet conenction over an ethernet cable connected to yo
 
 NOTE: I need to further clarify this bit!!! Do keep in mind that if you're on a metered network and you choose to add the online repos, the installer will download packages with newer versions. 
 
-Clicking `Next` will add and refresh the selected repositories - if any - and takes you to the next step.
-
-## System Role
+### System Role
 
 At this section of the preparation you can select from a list of predefined use cases which will tailor the system for the selected scenario. It is recommended to take a look at the [Choosing the right image](pick_an_image.md) page prior to continuing as it provides a brief explanation of desktop environments. Do note if you're using a DVD installer without an active internet connection, some of the listed desktop envirnments will not be available.
 
@@ -75,5 +76,10 @@ At this section of the preparation you can select from a list of predefined use 
 
 Select whichever suits your needs the best and press `Next` to conitnue.
 
-## Suggested Partitioning
+## Disk
+### Suggested Partitioning
+
+### Guided Setup
+
+### Expert Partitioner
 
