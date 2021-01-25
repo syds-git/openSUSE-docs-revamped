@@ -1,6 +1,17 @@
 # Step by step guide
 ## Before you continue
 
+This guide is based on openSUSE Leap and assumes that you will have no other Linux, Windows or MacOS operating systems installed along openSUSE. However, the differences between the installers for the openSUSE variants - like Tumbleweed, MicroOS and Kubic - are miniscual and most parts of the installer will be identical. Expect slight differences in *System Role* and *Installation Settings*.
+
+### Minimum System Requirements
+
+* Any AMD64/Intel* EM64T processor (32-bit processors are not supported).
+* 1 GB physical RAM (4 GB or more strongly recommended).
+* 10 GB available disk space for a minimal installation, 16 GB for a graphical desktop (more is recommended). In case you plan to use Btrfs snapshots a minimum of 40 GB for the root partition is recommended.
+* Supports most modern sound and graphics cards, 1024 x 768 display resolution (higher recommended).
+
+### Precautions
+
 * Make sure that you backed up all your data from the disk where you're planning to install openSUSE to.
 * If installing it on a separate drive and if you can, go ahead and disconnect the drives that you will not use. You can always foreign operating systems to Grub from a final installation, but selecting the wrong drive to install openSUSE to will overwrite the disk.
 * In case you're using a Network image (Netiso) make sure that you have a strong internet connection. A wired connection is always better than a wifi signal.
