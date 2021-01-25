@@ -8,15 +8,11 @@
 
 If you read the above listed safety measures and hopefully followed them, you're ready to boot your erlier prepared USB drive and turn on your computer. Boot from the USB drive and select installation from the boot menu.
 
-![Grub menu](image/yast_grub_menu.png)
-
 If you want to see details while the installer is booting you can press `ESC` on the keyboard.
 
 ## Language, Keyboard and License Agreement
 
 *Welcome to the YaST installer!*
-
-![EULA](image/yast_eula.png)
 
 This is the first step to make to end up with a fully functional openSUSE installation. At this page you can change the language under `Language` (Alt+L), change the keyboard layout under `Keyboard Layout` (Alt+K) and you have a chance to test your selected keyboard layout in the field under `Keyboard Test` (Alt+y).
 If you done all the basic configurations do read through the `License Agreement` as it is informing you on roles, responsibilities and potential limitations.
@@ -28,26 +24,18 @@ Clicking `Next` will take you to the next step.
 
 ## Network Settings
 
-![Network Settings](image/yast_network_settings.png)
-
 If you have an active wired internet connection which can automatically configure by the system you can skip this part. However, if you're not planning to use online repositories during the installation process and rely on the packages provided by the DVD installer you can skip this part.
 When you don't have a network connection - because you have don't have an ethernet port on your machine or you're using wireless connections only - you will be prompted to configure your network settings. By default the YaST system installer is using a network controller software called Wicked. Keep in mind that if you will choose to use Network Manager (NM) instead of Wicked, your network configuration will not be transferred from Wicked to Network Manager.
 
-
 You will see a list of available network adapters in a list from which you can select the one that you wish to configure and press `Edit`. In case of configuring a wireless adapter you will see the `Wireless Specific` tab open. Here you can `Scan Network`, select the name of you wireless network (SSID), select the authentication mode - which is in most cases will be WPA-PSK "home" - and input your password. 
 On the `Addresses` tab you will be able to configure the ip address of your adapter. You can select `Dynamic Address` in which case you will receive an address from your router/other dhcp server on your network or `Statically Assigned IP Address` in which case you need to type an ip address, a subnet mask and a hostname. Click `Next` when finished.    
-   
 ![Wireless configuration](image/yast_wireless_specific.png)
-   
-![Address](image/yast_network_address.png)
 
 **If** you configured a statically assigned ip address switch to the `Routing` tab, press `Add` and add your default gateway address and select the network adapter to which you want this route to be assigned to.    
 Press `OK` then `Next` to apply your changes and continue the installer.
 
 
 ## List of Online Repositories
-
-![List of Online Repositories](image/yast_repos_list.png)
 
 If you have an active Internet conenction over an ethernet cable connected to your computer, right after you pass the *"Language, Keyboard and License Agreement"* section you will be prompted with a question if you want to *"activate online repositories now?"*.It is recommended to select *Yes* which will provide with a list repositories, pre-selecting the main ones in advance. These repositories are the following:
 
@@ -65,8 +53,6 @@ NOTE: I need to further clarify this bit!!! Do keep in mind that if you're on a 
 Clicking `Next` will add and refresh the selected repositories - if any - and takes you to the next step.
 
 ## System Role
-
-![System Role](image/yast_system_role.png)
 
 At this section of the preparation you can select from a list of predefined use cases which will tailor the system for the selected scenario. It is recommended to take a look at the [Choosing the right image](pick_an_image.md) page prior to continuing as it provides a brief explanation of desktop environments. Do note if you're using a DVD installer without an active internet connection, some of the listed desktop envirnments will not be available.
 
