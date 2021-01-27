@@ -266,3 +266,23 @@ They need to be installed inside the toolbox
 sudo zypper install xorg-x11-fonts-core adwaita-icon-theme
 ```
 
+## Alternative for Gnome Extensions
+There is an alternative to install Gnome Extensions, so no RPM installed browser is necessary.
+It's currently under development at [Github](https://github.com/ekistece/GetExtensions)
+
+You can install it via a toolbox; the commands are as follows:
+```
+$ toolbox -u
+$ sudo zypper in git python38-pip
+$ cd /tmp
+$ git clone https://github.com/ekistece/GetExtensions.git
+$ pip3 install ./GetExtensions --user
+$ exit
+```
+You can then open the application `Get Extensions` that is available in your launchpad 
+
+To uninstall:
+```pip3 uninstall getextensions```
+
+
+
