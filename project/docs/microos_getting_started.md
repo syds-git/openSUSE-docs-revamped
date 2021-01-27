@@ -8,6 +8,14 @@
 Commands starting with `$` can be copied straight into your terminal prompt.
 Command starting with `#` can only be run inside a transactional-update shell.
 
+### Ways to install applications
+You can install applications in several ways:
+* flatpaks from flathub --_preferred solution_
+* RPM's via `sudo transactional-update pkg install package_name`
+* RPM's in a toolbox `toolbox -u`
+* snaps (requires some extra setup to get snapd installed)
+* AppImages
+
 ### Full drive encryption
 If you want a full drive encryption, you can go through the ISO installer as normal, but at the last screen click on _Partitioning_ and use the guided partitioner to enable encryption. _LVM_ is not necessary for it to work. However with full drive encryption you will need to enter your password twice: 
 1. the first time to open the grub menu
