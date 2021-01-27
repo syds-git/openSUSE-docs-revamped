@@ -3,13 +3,49 @@
 1. grab ISO from [https://en.opensuse.org/Portal:MicroOS/Downloads](https://en.opensuse.org/Portal:MicroOS/Downloads)
 2. put ISO on a USB drive and start the installation proces.
 3. choose if you want to use Gnome or KDE.
+4. Choose if you want encryption 
+
+Commands starting with $ can be copied straight into the terminal
+Command starting with # can only be run inside a transactional-update shell
+
+### full drive encryption
+If you want full drive encryption, you can go through the ISO installer as normal, but at the last screen click on partinioning and use the guided partitioner to enable encryption. LVM is not necessary for it to work. However with full drive encryption you will need to enter the passphrase twice: 
+1. to open the grub menu
+2. to decrypt during boot.
+
+The second decrypt can also be done automatically with the following [manual](https://en.opensuse.org/SDB:Encrypted_root_file_system):
+The steps below describe how to set up a key file. Please execute the commands and edit the files listed below as root.
+
+```
+$ sudo transactional-update shell
+  # touch /.root.key
+  # chmod 600 /.root.key
+  # dd if=/dev/urandom of=/.root.key bs=1024 count=1
+  # cryptsetup luksAddKey /dev/sda1 /.root.key
+```
+replace /dev/sda1 with the root partition (`sudo fdisk -l` to see partitions)
+```
+  # vim /etc/crypttab
+```
+  Edit /etc/crypttab, find the row that pertains to the root partition by UUID and add the key file in the third column.
+
+    cr_sda1 UUID=... /.root.key
+
+  (Again, the partition name is just an example.)
+  Configure dracut to add the key file to the initrd:
+```
+  # echo -e 'install_items+=" /.root.key "' | tee --append /etc/dracut.conf.d/99-root-key.conf > /dev/null
+  # mkinitrd
+  # exit
+$ sudo reboot
+```
 
 ### Installation: GNOME
 Make sure you install a browser and unzip via transactional-updates if you want to use Gnome extensions. Then some commands are in order:
 
 * Install some useful packages trough transactional-update and then reboot:
 ```
-$ sudo transactional-update pkg install gnome-remote-desktop gnome-shell-search-provider-nautilus chromium gnome-tweaks unzip
+$ sudo transactional-update pkg install gnome-remote-desktop gnome-shell-search-provider-nautilus chromium
 $ sudo reboot
 ```
 
@@ -47,9 +83,10 @@ $ sudo reboot
     * [Qogir-icon-theme](https://github.com/vinceliuice/Qogir-icon-theme)
     * [Matcha-gtk](https://github.com/vinceliuice/Matcha-gtk-theme)
     * [Matcha-KDE](https://github.com/vinceliuice/Matcha-kde)
-
+    * [Akwa-gtk](https://github.com/berkiyo/akwa)
+    
 ### General tips
-I recommend disabling automatic updating and rebooting as well. It’s a cool feature, and we’re thinking about how to have it better integrated into a desktop distribution. For now, I’ve disabled it and I recommend doing the same, at least until you have learned a little bit about it, are more familiar with the idea and with the basics of how it works, and come come-up with the best automatic updating & rebooting strategy for your workflow and use case. So:
+I recommend disabling automatic updating and rebooting as well. It’s a cool feature (mainly for servers that are running 24/7), and we’re thinking about how to have it better integrated into a desktop distribution. For now, I’ve disabled it and I recommend doing the same, at least until you have learned a little bit about it, are more familiar with the idea and with the basics of how it works, and come come-up with the best automatic updating & rebooting strategy for your workflow and use case. So:
 ```
 $ sudo systemctl disable --now transactional-update.timer
 $ sudo systemctl disable --now rebootmgr.service
@@ -65,18 +102,27 @@ $ sudo rebootmgrctl status
 Updates are now to be initialised manually with:
 ```
 $ sudo transactional-update dup
+$ sudo reboot
 ```
 Or
 ```
 $ sudo transactional-update shell
   # zypper dup
   # exit
+$ sudo reboot
+```
+if you have added repositories to zypper by yourself, changes are that they are not refreshing automatically with a `dup` command. You'll have to give them the flag to autorefresh:
+```
+$ sudo transactional-update shell
+  # zypper lr -p
+  # zypper mr -f <number of repo you want to add Yes to in the Refresh colomn>
+  # exit
+$ sudo reboot
 ```
 
 I also recommend installing a few more packages that are useful.
 ```
-$ sudo transactional-update pkg install
-bash-completion wget nfs-client autofs
+$ sudo transactional-update pkg install nfs-client autofs
 $ sudo reboot
 ```
 
@@ -132,7 +178,7 @@ $ sudo transactional-update shell
 $ sudo reboot
 ```
 
-## Adding the extension pack for the host
+#### Adding the extension pack for the host
 ```
 $ sudo transactional-update shell
   # cd /tmp
@@ -150,7 +196,7 @@ So for example if we install `zerotier`, pick a TumbleWeed repository. But click
 And choose the _Add repository and install manually_ option.
 ```
 $ sudo transactional-update shell
-  # zypper addrepo https://download.opensuse.org/repositories/home:alphard:Network:RPM/openSUSE_Tumbleweed/home:alphard:Network:RPM.repo 
+  # zypper addrepo https://download.opensuse.org/repositories/home:alphard:RHEL/openSUSE_Tumbleweed/home:alphard:RHEL.repo 
   # zypper ref
   # zypper in zerotier-one
   # exit
@@ -174,14 +220,18 @@ $ sudo reboot
 ### No graphical session/login screen in Hyper-V
 hyper-v needs package "xf86-video-fbdev" for graphical session
 ```
-sudo transactional-update pkg install xf86-video-fbdev
+$ sudo transactional-update pkg install xf86-video-fbdev
+$ sudo reboot
 ```
 
 ### Toolbox is not starting ("potentially insufficient UIDs and GIDs")
 uid/guid needs to be set for toolbox to work
 ```
-echo "<yourusername>:100000:65536" > /etc/subuid 
-echo "<yourusername>:100000:65536" > /etc/subgid
+$ sudo transactional-update shell
+  # echo "<yourusername>:100000:65536" > /etc/subuid 
+  # echo "<yourusername>:100000:65536" > /etc/subgid
+  # exit
+$ sudo reboot
 ```
 
 ### Graphical applications in the toolbox are missing fonts/icons
