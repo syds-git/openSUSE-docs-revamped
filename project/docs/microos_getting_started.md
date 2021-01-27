@@ -1,6 +1,6 @@
 ## Setting up MicroOS as a desktop OS
 ### Pre-installation
-1. Download an ISO image from [https://en.opensuse.org/Portal:MicroOS/Downloads](https://en.opensuse.org/Portal:MicroOS/Downloads)
+1. Download an ISO image from [https://en.opensuse.org/Portal:MicroOS/Downloads](https://en.opensuse.org/Portal:MicroOS/Downloads); _Choose the Tumbleweed base, as the LEAP base does not contains patterns for the desktop._
 2. Write the ISO on a USB drive and start the installation proces.
 3. Select GNOME or KDE Plasma as desktop environment.
 4. Select _Encryption_ if desired. 
@@ -43,11 +43,19 @@ $ sudo reboot
 ```
 
 ### Installation: GNOME
-Make sure you install a browser and unzip via transactional-updates if you want to use GNOME extensions. Then some commands are in order:
+Make sure you install a browser via transactional-updates if you want to use GNOME extensions. The easiest way to install Gnome extensions is via the website provided by the [Gnome project](https://extensions.gnome.org/). For this to work however you need a browser that installed directly on the system and in a container (like flatpaks, snaps, AppImages or in a toolbox). In the browser you need to install the plugin that is mentioned on the top of the page when you first open it. 
 
-* Install some useful packages trough transactional-update and then reboot:
+After installation of the plugin you can reload the page and choose the Gnome Extensions you want to install.
+
+To get Gnome extensions running you need the following command to install Chromium directly:
 ```
-$ sudo transactional-update pkg install gnome-remote-desktop gnome-shell-search-provider-nautilus chromium
+$ sudo transactional-update pkg install chromium
+$ sudo reboot
+```
+
+* You can also install some other useful packages trough transactional-update and then reboot:
+```
+$ sudo transactional-update pkg install gnome-remote-desktop gnome-shell-search-provider-nautilus
 $ sudo reboot
 ```
 
@@ -177,9 +185,7 @@ $ sudo reboot
 ```
 
 ### Adding software from OBS
-Find what you are looking for on [https://software.opensuse.org](https://software.opensuse.org). Then choose the openSUSE Tumbleweed repo.
-
-!!!! warning
+Find what you are looking for on [https://software.opensuse.org](https://software.opensuse.org). Then choose the openSUSE Tumbleweed repo, as MicroOS desktop is build from the same base as Tumbleweed. Everything that runs on Tumbleweed, should in theory, run without fail on MicroOS Desktop.
   You can't use the 1-click install, as there is no YaST and the 1-click installer has no access to a transactional-update. So     for example if we install `zerotier`, pick a TumbleWeed repository. But click on _Expert Download_ choose the _Add repository and install manually_ option.
 ```
 $ sudo transactional-update shell
