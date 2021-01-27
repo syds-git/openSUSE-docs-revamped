@@ -14,7 +14,7 @@ If you want full drive encryption, you can go through the ISO installer as norma
 2. to decrypt during boot.
 
 The second decrypt can also be done automatically with the following [manual](https://en.opensuse.org/SDB:Encrypted_root_file_system):
-The steps below describe how to set up a key file. Please execute the commands and edit the files listed below as root.
+The steps below describe how to set up a key file. Please execute the commands and edit the files listed below in a transactional-update shell.
 
 ```
 $ sudo transactional-update shell
@@ -111,20 +111,6 @@ $ sudo transactional-update shell
   # exit
 $ sudo reboot
 ```
-if you have added repositories to zypper by yourself, changes are that they are not refreshing automatically with a `dup` command. You'll have to give them the flag to autorefresh:
-```
-$ sudo transactional-update shell
-  # zypper lr -p
-  # zypper mr -f <number of repo you want to add Yes to in the Refresh colomn>
-  # exit
-$ sudo reboot
-```
-
-I also recommend installing a few more packages that are useful.
-```
-$ sudo transactional-update pkg install nfs-client autofs
-$ sudo reboot
-```
 
 
 ### Installing flatpaks
@@ -202,6 +188,15 @@ $ sudo transactional-update shell
   # exit
 $ sudo reboot
 ```
+if you have added repositories to zypper by yourself, it's posisble they are not refreshing automatically with a `dup` command. You'll have to give them the flag to autorefresh:
+```
+$ sudo transactional-update shell
+  # zypper lr -p
+  # zypper mr -f <number of repo you want to add Yes to in the Refresh colomn>
+  # exit
+$ sudo reboot
+```
+
 ### Tips if you're installing on laptop
 My laptop install was missing 2 important packages:
 
