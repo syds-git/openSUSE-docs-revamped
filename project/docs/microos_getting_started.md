@@ -6,7 +6,7 @@
 4. Select _Encryption_ if desired. 
 
 Commands starting with `$` can be copied straight into your terminal prompt.
-Command starting with `#` can only be run inside a transactional-update shell.
+Command starting with `#` can only be run inside a transactional-update shell; _transactional-update shell is a chroot where you can open the snapshot you want to boot into next. And there you can make adjustments to the normally immutable root filesystem. This is mainly for advanced users._
 
 ### Ways to install applications
 You can install applications in several ways:
@@ -224,6 +224,23 @@ You can install both with:
 $ sudo transactional-update pkg install tlp ModemManager
 $ sudo reboot
 ```
+
+### Some useful aliases for bash to type the commands faster
+edit the file `~/.bashrc`
+
+And add the following lines in the file at the end:
+```
+#My custom aliases
+alias shalt="sudo systemctl halt"
+alias sboot="sudo systemctl reboot"
+alias sts="sudo transactional-update shell"
+alias stsc="sudo transactional-update shell --continue"
+alias stdc="sudo transactional-update dup --continue"
+alias std="sudo transactional-update dup"
+alias fsu="sudo flatpak update && sudo snap refresh"
+```
+When you for example type `std` in the terminal, you will give the command `sudo transactional-update dup`
+
 
 ## Known Issues
 ### No graphical session/login screen in Hyper-V
