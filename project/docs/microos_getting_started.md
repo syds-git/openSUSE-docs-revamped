@@ -62,7 +62,7 @@ $ sudo reboot
 ```
 
 ### Installation: GNOME
-Make sure to install a browser via transactional-updates if you want to use GNOME extensions. The easiest way to install GNOME extensions is via the website provided by the [GNOME project](https://extensions.gnome.org/). For this to work however, you will need a browser already installed on the system and inside a containerized environment (like flatpaks, snaps, AppImages or in a toolbox). The browser will need have the plugin mentioned on the top of the page already installed when you first open it. 
+Make sure to install a browser via transactional-updates if you want to use GNOME extensions. The easiest way to install GNOME extensions is via the website provided by the [GNOME project](https://extensions.gnome.org/). For this to work however, you will need a browser installed on the system via transactional-update, as it will not work inside a containerized environment (like flatpaks, snaps, AppImages or in a toolbox). The browser will need have the plugin mentioned on the top of the page when you first open it. 
 
 After installation of the plugin, you can reload the page and choose the GNOME Extensions you want to install.
 
@@ -247,6 +247,7 @@ alias sts="sudo transactional-update shell"
 alias stsc="sudo transactional-update shell --continue"
 alias stdc="sudo transactional-update dup --continue"
 alias std="sudo transactional-update dup"
+alias sfu="sudo flatpak update"
 alias fsu="sudo flatpak update && sudo snap refresh"
 ```
 Then for example typing `std` in a terminal prompt will issue the command `sudo transactional-update dup`.
