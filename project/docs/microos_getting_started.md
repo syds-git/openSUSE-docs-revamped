@@ -152,10 +152,10 @@ If you want to install flathub for all users (in `/var folder`):
 ```
 $ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
-Some flatpaks you could install:
-- Firefox
-- Libreoffice
-- VLC
+Some flatpaks you could install from [flathub](https://flathub.org/home):
+- [Firefox](https://flathub.org/apps/details/org.mozilla.firefox)
+- [Libreoffice](https://flathub.org/apps/details/org.libreoffice.LibreOffice)
+- [VLC](https://flathub.org/apps/details/org.videolan.VLC)
 - etc.
 
 ### Installing snapds
